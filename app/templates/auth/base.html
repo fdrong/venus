@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+{% from "macro.html" import flash_msg %}
+{% from "macro.html" import form_errors %}
+<head lang="en">
+
+    {% block head %}
+        {% include 'head.html' %}
+    {% endblock head %}
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+  <style>
+    .header {
+      text-align: center;
+    }
+    .header h1 {
+      font-size: 200%;
+      color: #333;
+      margin-top: 30px;
+    }
+    .header p {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+<div class="header">
+  <div class="am-g">
+    <h1>Amaze Ui</h1>
+    <p>Integrated Development Environment<br/>代码编辑，代码生成，界面设计，调试，编译</p>
+  </div>
+  <hr />
+</div>
+{% block content %}
+
+{% endblock %}
+{#{% block foot %}#}
+{#    {% include 'foot.html' %}#}
+{#{% endblock %}#}
+
+</body>
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="{{ url_for('static', filename='js/amazeui.ie8polyfill.min.js') }}"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<!--<![endif]-->
+<script src="{{ url_for('static', filename='js/amazeui.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</html>

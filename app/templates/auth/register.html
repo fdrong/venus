@@ -1,0 +1,53 @@
+{% extends 'auth/base.html' %}
+
+
+{% block title %}注册{% endblock %}
+{% block content %}
+<div class="am-g">
+  <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+{#    <h3>登录</h3>#}
+{#    <hr>#}
+{#    <div class="am-btn-group">#}
+{#      <a href="#" class="am-btn am-btn-secondary am-btn-sm"><i class="am-icon-github am-icon-sm"></i> Github</a>#}
+{#      <a href="#" class="am-btn am-btn-success am-btn-sm"><i class="am-icon-google-plus-square am-icon-sm"></i> Google+</a>#}
+{#      <a href="#" class="am-btn am-btn-primary am-btn-sm"><i class="am-icon-stack-overflow am-icon-sm"></i> stackOverflow</a>#}
+{#    </div>#}
+{#    <br>#}
+{#    <br>#}
+
+      {{ flash_msg() }}
+      {{ form_errors(form) }}
+    <form method="post" class="am-form" action="">
+        {{ form.hidden_tag() }}
+      <label for="email">邮箱:</label>
+        {{ form.email }}
+      <br>
+        <label for="username">用户名:</label>
+        {{ form.username }}
+      <br>
+        <label for="name">姓名:</label>
+        {{ form.name }}
+      <br>
+        <label for="mobilephone">手机号:</label>
+        {{ form.mobilephone }}
+      <br>
+        <label for="company">公司:</label>
+        {{ form.company }}
+      <br>
+      <label for="password">密码:</label>
+        {{ form.password }}
+      <br>
+      <label for="password">再输一次:</label>
+        {{ form.password2 }}
+      <br />
+        <br />
+      <div class="am-cf">
+        <input type="submit" name="" value="注 册" class="am-btn am-btn-primary am-btn-sm am-fl">
+{#        <input type="submit" name="" value="忘记密码 ^_^? " class="am-btn am-btn-default am-btn-sm am-fr">#}
+          <br>
+      </div>
+    </form>
+{#    <hr>#}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{#flash提示信息#}
+{% macro flash_msg() %}
+    {% for message in get_flashed_messages() %}
+        <div class="flash am-alert am-alert-danger" data-am-alert>
+            <button type="button" class="am-close">&times;</button>
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+{% endmacro %}
+
+{% macro form_errors(form, hiddens=True) %}
+  {% if form.errors %}
+    {% for fieldname, errors in form.errors.items() %}
+        <div class="flash am-alert am-alert-danger" data-am-alert>
+            <button type="button" class="am-close">&times;</button>
+            {% for error in errors %}
+                <p class="error">{{ fieldname }}:{{error}}</p>
+            {% endfor %}
+        </div>
+    {% endfor %}
+  {% endif %}
+{% endmacro %}

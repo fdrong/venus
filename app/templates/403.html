@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}
+    403
+{% endblock %}
+{% block content %}
+    <div class="admin-content">
+    <div class="admin-content-body">
+      <div class="am-cf am-padding am-padding-bottom-0">
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">403</strong> / <small>That’s an error</small></div>
+      </div>
+
+      <hr>
+
+      <div class="am-g">
+        <div class="am-u-sm-12">
+          <h2 class="am-text-center am-text-xxxl am-margin-top-lg">403. Forbidden</h2>
+          <p class="am-text-center">没有权限访问你要的请求页面</p>
+        <pre class="page-404">
+          .----.
+       _.'__    `.
+   .--($)($$)---/#\
+ .' @          /###\
+ :         ,   #####
+  `-..__.-' _.-\###/
+        `;_:    `"'
+      .'"""""`.
+     /,  ya ,\\
+    //  404!  \\
+    `-._______.-'
+    ___`. | .'___
+   (______|______)
+        </pre>
+        </div>
+      </div>
+    </div>
+
+    {% block foot %}
+        {% include 'foot.html' %}
+    {% endblock %}
+  </div>
+{% endblock %}
