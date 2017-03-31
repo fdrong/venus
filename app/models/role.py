@@ -42,3 +42,6 @@ class Role(db.Model):
             db.Column.name: str(getattr(self, db.Column.name))
             for db.Column in self.__table__.db.Columns
         }
+
+    def insert_roles(self):
+        pass

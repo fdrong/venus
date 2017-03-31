@@ -3,7 +3,7 @@
 """
 __title__ =''
 __author__ = 'fdrong'
-__mtime__ = '2017/3/25'
+__mtime__ = '2017/3/31'
 """
 from flask_wtf import FlaskForm
 from wtforms.validators import Required, Regexp, Length, Email
@@ -24,7 +24,7 @@ class ProfileForm(FlaskForm):
     mobilephone = StringField(u'手机号:', validators=[Required(), Regexp('[0-9]{11}',
                                             0, message=u"请确认手机号码是否为11位数字")])
     company = SelectField(u'公司:', coerce=int, validators=[Required()])
-    submit = SubmitField(u'保存修改')
+    submit = SubmitField(u'提交')
 
     def validate_email(self, field):
         if User.query.filter_by(email=field.data).first():

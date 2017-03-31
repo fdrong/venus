@@ -12,6 +12,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
 from app import db, app
+from permission import Permission
 
 
 class User(UserMixin, db.Model):
@@ -71,6 +72,7 @@ class User(UserMixin, db.Model):
         self.confirmed = True
         db.session.add(self)
         return True
+
     def reset_password(self, token, newpassword):
         s = Serializer(current_app.config['SECRET_KEY'])
         try:
@@ -82,3 +84,11 @@ class User(UserMixin, db.Model):
         self.password = newpassword
         db.session.add(self)
         return True
+
+    def can(self, permission_code):
+        """check if user has the permission"""
+        permission = Permission.query.filter(Permission.codename == permission_code).first()
+        if permission in self.role.permissions:
+            return True
+        else:
+            return False

@@ -1,9 +1,11 @@
 {% extends "auth/base.html" %}
 
 {% block title %}用户未确认{% endblock %}
-
+{% from 'macro.html' import flash_msg %}
 {% block content %}
+
 <div class="page-header">
+    {{ flash_msg() }}
     <h1>
         您好, {{ current_user.username }}!
     </h1>

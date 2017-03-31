@@ -13,8 +13,9 @@ from flask import g, session, render_template, flash, redirect, \
 from . import auth
 from .forms import LoginForm, RegistrationForm, PasswordResetRequestForm, PasswordResetForm
 from app import app, login_manager, db
-from app.models import User, Company
+from app.models import User
 from app.utils.email import send_mail
+from app.utils.consts import CompanyChoices
 
 
 @login_manager.user_loader
@@ -86,7 +87,7 @@ def logout():
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
-    form.company.choices = [(company.id, company.name) for company in Company.query.all()]
+    form.company.choices = CompanyChoices
     if form.validate_on_submit():
         user = User(
                     username=form.username.data,
@@ -174,6 +175,6 @@ def resend_confirmation():
     token = current_user.generate_confirmation_token()
     send_mail(current_user.email, u'确认账户',
                'auth/email/confirm', user=current_user, token=token)
-    flash(u'确认邮件已经发送至您的邮箱')
-    return redirect(url_for('main.index'))
+    flash(u'确认邮件已经发送至您的邮箱, 请确认后刷新页面重试')
+    return render_template('auth/unconfirmed.html')
 

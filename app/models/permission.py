@@ -37,3 +37,10 @@ class Permission(db.Model):
             db.Column.name: str(getattr(self, db.Column.name))
             for db.Column in self.__table__.db.Columns
         }
+
+    @staticmethod
+    def insert_permissions(self):
+        """
+        insert into data base from util/permissions.py
+        """
+        pass

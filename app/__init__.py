@@ -85,11 +85,14 @@ logger.setLevel(logging.INFO)
 # -------------------------------------------------------------------
 # 注册蓝图模块
 # -------------------------------------------------------------------
-from .auth import auth  # auth蓝图
+from .auth import auth        # auth蓝图
 app.register_blueprint(auth)
 
 from .main import main
-app.register_blueprint(main, url_prefix='/main')
+app.register_blueprint(main)  # 主页
+
+from .user import user
+app.register_blueprint(user, url_prefix='/user')  # 用户
 #
 # from .api import api  # api蓝图
 # app.register_blueprint(api, url_prefix='/api')

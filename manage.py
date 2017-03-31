@@ -23,5 +23,11 @@ def test():
     unittest.TextTestRunner(verbosity=2).run(tests)
 
 
+@manager.command
+def deploy():
+    """run deploy tasks"""
+    pass
+
+
 if __name__ == '__main__':
     manager.run()
